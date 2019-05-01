@@ -1,4 +1,4 @@
-package assembler;
+package assembler;//
 import java.lang.Integer;
 public class Code {
 	public String dest(String d) {
