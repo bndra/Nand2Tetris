@@ -25,16 +25,12 @@ public class CompilationEngine
 			writeCurrent();
 		}
 		tokenizer.advance();
-		if(tokenizer.getCT().equalsIgnoreCase("static")|
-				tokenizer.getCT().equalsIgnoreCase("field"))
-		{
-			while(tokenizer.getCT().equalsIgnoreCase("static")|
+		while(tokenizer.getCT().equalsIgnoreCase("static")|
 					tokenizer.getCT().equalsIgnoreCase("field"))
-			{
-				CompileClassVarDec();
-			}
+		{
+			CompileClassVarDec();
 		}
-		if(tokenizer.getCT().equalsIgnoreCase("contructor")|
+		while(tokenizer.getCT().equalsIgnoreCase("constructor")|
 				tokenizer.getCT().equalsIgnoreCase("function")|
 				tokenizer.getCT().equalsIgnoreCase("method"))
 		{
@@ -47,7 +43,7 @@ public class CompilationEngine
 	
 	public void CompileClassVarDec() throws IOException
 	{
-		writeOpenning("varDec");
+		writeOpenning("classVarDec");
 		while(!tokenizer.getCT().equals(";"))
 		{
 			writeCurrent();
@@ -55,7 +51,7 @@ public class CompilationEngine
 		}
 		writeCurrent();
 		tokenizer.advance();
-		writeClosing("varDec");
+		writeClosing("classVarDec");
 	}
 	
 	public void CompileSubroutine() throws IOException

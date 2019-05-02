@@ -20,7 +20,7 @@ public class Tokenizer
 	public Tokenizer (Scanner input) 
 	{
 		jackFile=input;
-		jackFile.useDelimiter("(/\\*(\\r?\\n|\\r|.)*\\*/)|(//.*(\\r?\\n|\\r|$)?)|(\\p{javaWhitespace}|(?=\\W|(?<=\\W)\\w))(?!((?<=\".*).*\"))");//\\{|\\((?=.)|[\\.](?=.)|\\[(?=.)|\\}|\\)|\\]|,(?=.)|;|\\+|\\-|\\*|/|&|\\||\\<|\\>|\\=|~
+		jackFile.useDelimiter("(/\\*(\\r?\\n|\\r|.)*?\\*/)|(//.*(\\r?\\n|\\r|$|\\t)?)|(\\p{javaWhitespace}|(?=\\W|(?<=\\W)\\w))(?!((?<=\".*).*\"))");//\\{|\\((?=.)|[\\.](?=.)|\\[(?=.)|\\}|\\)|\\]|,(?=.)|;|\\+|\\-|\\*|/|&|\\||\\<|\\>|\\=|~
 		currentToken=null;//
 	}
 	public boolean hasMoreTokens()
@@ -72,6 +72,8 @@ public class Tokenizer
 			return "&lt;";
 		else if(currentToken.equals(">"))
 			return "&gt;";
+		else if(currentToken.contentEquals("&"))
+			return "&amp;";
 		return currentToken;
 	}
 	public int intVal()
