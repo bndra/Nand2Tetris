@@ -22,5 +22,4 @@ public class Main
 		eng.CompileClass();
 		output.flush();
 	}
-
 }
