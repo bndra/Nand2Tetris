@@ -110,6 +110,7 @@ public class Code {
 				bin = "1" + bin;
 			dec = dec/2;
 		}
+		
 		return bin;
 	}
 }
